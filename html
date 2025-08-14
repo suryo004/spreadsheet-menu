@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Data dari Google Sheet</title>
+</head>
+<body>
+  <div id="menu"></div>
+
+  <script>
+    fetch("https://script.google.com/macros/s/AKfycbxW72395dRAiaQL_VaHSdfaXHtoCJTqsEqZBsb8pNIY68EQtQuvBdaOB4Eb-hFodahP/exec")
+      .then(res => res.json())
+      .then(data => {
+        let menuHTML = "<ul>";
+        data.forEach(item => {
+          menuHTML += `<li>${item.Menu}</li>`;
+        });
+        menuHTML += "</ul>";
+        document.getElementById("menu").innerHTML = menuHTML;
+      });
+  </script>
+</body>
+</html>
